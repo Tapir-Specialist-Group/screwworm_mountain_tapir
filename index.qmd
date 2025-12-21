@@ -1,0 +1,47 @@
+---
+title: ""
+sidebar: false
+toc: false
+page-layout: full
+format: html
+
+listing:
+  - id: recent-blog-listing
+    contents:
+      - "blog/*/index.qmd"
+    sort: "date desc"
+    type: grid
+    max-items: 10
+    page-size: 3
+    categories: true
+    sort-ui: false
+    filter-ui: false
+    fields: [title, image, date, categories]
+---
+
+
+
+# Objetivo
+
+Entender y mitigar las causas de los casos de ataque de gusano barrenador (_Cochliomyia hominivorax_) a la danta de montaña (_Tapirus pinchaque_).
+
+
+::: {.callout-note icon=false}
+
+## Especificamente:
+
+- Realizar un censo de las poblaciones de perros en las comunidades
+aledanas al área protegida.  
+
+- Realizar un estudio dentro de las áreas protegidas para detectar la
+presencia/ausencia de la danta y del gusano barrenador y otras especies de moscas. 
+
+- Generar datos de referenda sobre las interacciones de la danta de
+montaña con el gusano, usando cámaras trampa, dispositivos
+acústicos, modelos de co-ocurrencia y entrevistas.
+
+- Implementar estrategias de comunicación, educación, formación y
+gestión del conocimiento en el área de influencia de la distribución de la danta, con habitantes locales y visitantes, para bajar las presiones a las que está sometida la especie.
+
+:::
+

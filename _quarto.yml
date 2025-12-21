@@ -1,0 +1,57 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  favicon: "https://dlizcano.github.io/favicon.png"
+  twitter-card: 
+    creator: "@dlizcano"
+  site-url: https://dlizcano.github.io/screwworm_mountain_tapir
+  open-graph: true
+  title: "Co-ocurrencia entre la Danta de Montana y el Gusano Barrenador"
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - icon: link
+        href: https://tapirs.org/
+      - icon: github
+        href: https://github.com/Occu_APs_all
+      - icon: twitter-x
+        href: https://twitter.com/iucn_tapirs
+      - icon: rss
+        href: blog.xml  
+  
+  page-footer:
+    background: "#009b39"
+    left: Licensed under <br>[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>
+    right: Built by [DL](https://dlizcano.github.io/about) with {{< fa heart title="a heart" >}}, [{{< fa brands r-project >}}](https://www.r-project.org/about.html) and 
+      [![](https://quarto.org/quarto.png){fig-alt="Quarto" width=65px}](https://quarto.org/) 
+
+  
+format:
+  html:
+    toc: true
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    code-link: true
+    code-block-bg: "gray70" 
+    code-fold: true
+    highlight-style: arrow
+    mainfont: Fira Sans
+    monofont: Fira Code, consolas, courier, monospace
+    fig-dpi: 600
+    fig-align: center
+    fig-width: 8
+    fig-asp: 0.7 # 1 / pi
+    fig-format: png
+
+lightbox:
+  match: auto
+  effect: fade
+  desc-position: right
+  loop: TRUE
+  

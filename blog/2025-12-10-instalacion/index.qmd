@@ -1,0 +1,213 @@
+---
+title: "Instalación de cámaras"
+subtitle: "En articulación con WCS-CARDER"
+description: "52 trampas cámara instaladas"
+lightbox: true
+author: 
+  - name: Diego Lizcano
+    orcid: 0000-0002-9648-0576
+    affiliation: 
+    - name: IUCN/SSC Tapir Specialist Group (TSG)
+    - name: Wildlife Conservation Society (WCS)
+  - name: Juliana Vélez-Gómez 
+    orcid: 0000-0003-0412-2761   
+    affiliation: 
+    - name: IUCN/SSC Tapir Specialist Group (TSG)
+  - name: Leonor Valenzuela
+    orcid: 0000-0003-0814-3690
+    affiliation: 
+    - name: Wildlife Conservation Society (WCS)
+  - name: Jackeline Rivera-Gómez
+    orcid: 0000-0001-7620-4876
+    affiliation: 
+    - name: CARDER
+  - name: Robinson Galindo-Tarazona
+    orcid: 0000-0003-1081-9418
+    affiliation: 
+    - name: SFF Otún Quimbaya
+  - name: María Girleza Ramírez-González
+    orcid: 0000-0001-5770-0890
+    affiliation: 
+    - name: SFF Otún Quimbaya
+  - name: Juan Camilo Mantilla-Castaño
+    orcid: 0000-0002-4504-6390
+    affiliation: 
+    - name: SFF Otún Quimbaya
+
+toc: true
+format: 
+  html:
+    code-fold: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+license: CC BY-SA
+date: "2025-12-10"
+execute:
+  freeze: true
+citation: true
+google-scholar: true
+bibliography: grateful-refs.bib
+bibliographystyle: https://www.zotero.org/styles/tapir-conservation
+categories: [mapa, cámaras, SFF Otun-Quimbaya]
+image: "image.jpg"
+---
+
+## Diseño de muestreo con cámaras 
+
+Elaboramos una red de posibles puntos de instalación de camaras en Risaralda, en conjunto con la CARDER y WCS. Esta red de puntos fue proyectada para cubrir tambien el area del SFF Otun-Quimbaya y el PNN Los Nevados como una cuadricula con separacion de 500 metros.
+
+
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| 
+library(grateful) # Facilitate Citation of R Packages
+library(readxl) # Read Excel Files
+library(DT) # A Wrapper of the JavaScript Library 'DataTables'
+library(sf) # Simple Features for R
+library(mapview) # Interactive Viewing of Spatial Data in R
+# library(maps) # Draw Geographical Maps
+library(tmap) # Thematic Maps
+library(terra) # Spatial Data Analysis
+library(elevatr) # Access Elevation Data from Various APIs
+library(glue) # easy paste
+library(tidyverse) # Easily Install and Load the 'Tidyverse'
+
+
+```
+
+
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| warning: false
+#| message: false
+#| column: screen-inset-shaded # wide
+
+
+cameras <- read_sf("C:/CodigoR/screwworm_mountain_tapir/data/cameras.csv")
+
+# Convert to a Spatial Object (sf)
+# CRS 4326 is standard WGS84 for Google Earth
+cameras_sf <- st_as_sf(cameras, coords = c("Longitude", "Latitude"), crs = 4326)
+
+puntos_500m <- read_sf("C:/CodigoR/screwworm_mountain_tapir/data/shp/puntos_camaras_500m.geojson")
+
+AP_Otun <- read_sf("C:/CodigoR/screwworm_mountain_tapir/data/shp/WDPA_WDOECM_Jan2026_Public_303548_shp-polygons.shp")
+
+AP_Nevados <- read_sf("C:/CodigoR/screwworm_mountain_tapir/data/shp/WDPA_WDOECM_Jan2026_Public_147_shp-polygons.shp")
+
+AP_Ucumari <- read_sf("C:/CodigoR/screwworm_mountain_tapir/data/shp/WDPA_WDOECM_Jan2026_Public_555555791_shp-polygons.shp")
+
+
+#corine <- read_sf("C:/CodigoR/screwworm_mountain_tapir/data/shp/ECOSISTEMAS_18062025.gpkg") |> st_transform(4326) 
+
+# 2. Using the extent of another object
+#target_bbox <- st_bbox(puntos_500m) |> st_buffer(dist = 0.5) 
+#cropped_corine <- st_crop(corine, target_bbox)
+# remove corine large from memory
+# rm(corine)
+
+croped_corine <- read_sf("C:/CodigoR/screwworm_mountain_tapir/data/shp/corine_cortado.gpkg") |> st_transform(4326) 
+
+# get elevation map
+elevation_18 <- rast(get_elev_raster(cameras_sf, z = 12)) #z =1-14
+# bb <-  st_as_sfc(st_bbox(elevation_17)) # make bounding box 
+
+
+
+
+# extract covs using points and add to _sites
+# covs_Col_18_sites <- cbind(Col_18_sites, terra::extract(elevation_18, Col_18_sites))
+# covs_Col_17_sites <- cbind(Col_17_sites, terra::extract(elevation_17, Col_17_sites))
+
+
+# get which are in and out
+cameras_sf$in_AP = st_intersects(cameras_sf, AP_Otun, sparse = FALSE)
+# covs_Col_17_sites$in_AP = st_intersects(covs_Col_17_sites, AP_Yasuni, sparse = FALSE)
+
+
+# make a map
+# mapview (cropped_corine, alpha=0.5) + 
+#   mapview (elevation_18, alpha=0.5) + 
+#   mapview (AP_Ucumari, color = "lightgreen", col.regions = "green", alpha = 0.5) +
+#   mapview (AP_Nevados, color = "lightgreen", col.regions = "green", alpha = 0.5) +
+#   mapview (AP_Otun, color = "green", col.regions = "green", alpha = 0.5) +
+#   mapview(puntos_500m)
+
+#  mapview (cameras_sf, zcol = "in_AP", col.regions =c("red","blue"), burst = TRUE) 
+
+tmap_mode("view")
+#> ℹ tmap modes "plot" - "view"
+#> ℹ toggle with `tmap::ttm()`
+tm_shape(puntos_500m) +
+      tm_dots(
+         size = 0.3,
+         #lwd = 1,
+         fill = "red",
+         col = "black",
+         fill_alpha = 0.5
+         ) +
+    tm_basemap("Stadia.StamenTerrain") + 
+    tm_minimap(position = c("left", "top"),
+               height = 4,
+               width = 5)
+
+
+```
+
+
+## Estratificacion por coberturas
+
+Se descargó el mapa de coberturas de MapBiomas y se recortó a la zona proyectada de puntos para contar con camaras en todas las coberturas. 
+
+### Distribución proporcional
+
+Bosque	2,558,147	2,558,147/5,814,440 = 0.4400	0.4400 × 100	44
+Agricultura	3,124,230	3,124,230/5,814,440 = 0.5373	0.5373 × 100	54
+Pino Plantado	132,063	132,063/5,814,440 = 0.0227	0.0227 × 100	2
+TOTAL	5,814,440	1.0000		100
+
+Minimum = 10 points per class
+Remaining = 100 - (3 × 10) = 70 points
+
+Bosque:     10 + (70 × 0.4400) = 10 + 31 = 41 points
+Agricultura: 10 + (70 × 0.5373) = 10 + 38 = 48 points
+Pino:       10 + (70 × 0.0227) = 10 + 2  = 12 points (use minimum)
+
+
+
+```{r}
+#| echo: false
+#| code-fold: true
+#| warning: false
+#| message: false
+#| eval: false
+
+
+
+
+```
+
+
+
+## Package Citation
+
+```{r}
+#| code-fold: true
+pkgs <- cite_packages(output = "paragraph", pkgs="Session", out.dir = ".")
+# knitr::kable(pkgs)
+pkgs
+```
+
+## Sesion info
+
+::: {.callout-note collapse="true"}
+```{r}
+print(sessionInfo(), locale = FALSE)
+```
+:::
