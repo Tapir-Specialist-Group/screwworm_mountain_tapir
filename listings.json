@@ -4,5 +4,11 @@
     "items": [
       "/blog/2025-12-10-instalacion/index.html"
     ]
+  },
+  {
+    "listing": "/gallery/galleries.html",
+    "items": [
+      "/gallery/galleries/my-gallery/index.html"
+    ]
   }
 ]
