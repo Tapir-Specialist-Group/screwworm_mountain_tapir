@@ -1,7 +1,0 @@
----
-title: "About"
----
-
-Este proyecto es una iniciativa del Grupo de Especialistas de Tapires (TSG) de la UICN y contribuye a los objetivos de monitoreo, prevención, vigilancia y conservación de la danta de montaña (_Tapirus pinchaque_) en el PNN Los Nevados y el SFF Otun-Quimbaya, y ayuda a implementar el Programa de Conservación de la Danta de Montaña (_Tapirus pinchaque_) en Parques Nacionales Naturales de Colombia, al establecer una linea base de la ocupación de la danta en el SFF Otun-Quimbaya y el PNN Los Nevados.
-
-
