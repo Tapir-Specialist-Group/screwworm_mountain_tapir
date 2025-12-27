@@ -2,23 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dlizcano.github.io/screwworm_mountain_tapir/index.html</loc>
-    <lastmod>2025-12-21T15:04:56.542Z</lastmod>
+    <lastmod>2025-12-27T03:58:36.609Z</lastmod>
   </url>
   <url>
     <loc>https://dlizcano.github.io/screwworm_mountain_tapir/posts/welcome/index.html</loc>
     <lastmod>2025-12-20T16:31:01.142Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dlizcano.github.io/screwworm_mountain_tapir/about.html</loc>
-    <lastmod>2025-12-21T15:04:56.603Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dlizcano.github.io/screwworm_mountain_tapir/posts/post-with-code/index.html</loc>
-    <lastmod>2025-12-20T16:31:01.147Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dlizcano.github.io/screwworm_mountain_tapir/blog/2025-12-10-instalacion/index.html</loc>
-    <lastmod>2025-12-21T15:15:38.756Z</lastmod>
   </url>
   <url>
     <loc>https://dlizcano.github.io/screwworm_mountain_tapir/gallery/galleries.html</loc>
@@ -27,5 +15,17 @@
   <url>
     <loc>https://dlizcano.github.io/screwworm_mountain_tapir/gallery/galleries/my-gallery/index.html</loc>
     <lastmod>2025-10-15T12:44:26.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dlizcano.github.io/screwworm_mountain_tapir/posts/post-with-code/index.html</loc>
+    <lastmod>2025-12-20T16:31:01.147Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tapir-specialist-group.github.io/screwworm_mountain_tapir/index.html</loc>
+    <lastmod>2025-12-27T06:34:07.821Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tapir-specialist-group.github.io/screwworm_mountain_tapir/about.html</loc>
+    <lastmod>2025-12-27T06:33:46.428Z</lastmod>
   </url>
 </urlset>

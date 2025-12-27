@@ -1,1 +1,1 @@
-Sitemap: https://dlizcano.github.io/screwworm_mountain_tapir/sitemap.xml
+Sitemap: https://tapir-specialist-group.github.io/screwworm_mountain_tapir/sitemap.xml
